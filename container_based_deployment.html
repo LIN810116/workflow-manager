@@ -251,20 +251,33 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>FYI, below is the dockerfile we just used.</p>
-<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">ARG</span> <span class="nv">CODE_VERSION</span><span class="o">=</span><span class="m">18</span>.04
-<span class="k">FROM</span> <span class="s">ubuntu:${CODE_VERSION}</span>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">ARG</span> <span class="nv">OS_VERSION</span><span class="o">=</span><span class="m">18</span>.04
+<span class="k">FROM</span> <span class="s">ubuntu:${OS_VERSION}</span>
 
 <span class="k">USER</span><span class="s"> root</span>
 
 <span class="c"># Environment variables</span>
-<span class="k">ENV</span> MODULES_DIR /modules
-<span class="k">ENV</span> SCRIPTS /scripts
-<span class="k">ENV</span> PROJECT_NAME wm_project
-<span class="k">ENV</span> PROJECT_ROOT /<span class="nv">$PROJECT_NAME</span>
-<span class="k">ENV</span> DICOM_NODE /dcmtk/received
-<span class="k">ENV</span> EXAMPLES /examples
-<span class="k">ENV</span> RESULTS /results
-<span class="k">ENV</span> RESOURCES /resources
+<span class="k">ARG</span> <span class="nv">PROJECT_NAME</span><span class="o">=</span>wm_project
+<span class="k">ENV</span> <span class="nv">PROJECT_NAME</span><span class="o">=</span><span class="nv">$PROJECT_NAME</span>
+<span class="k">ENV</span> <span class="nv">PROJECT_ROOT</span><span class="o">=</span>/<span class="nv">$PROJECT_NAME</span>
+
+<span class="k">ARG</span> <span class="nv">SCRIPTS</span><span class="o">=</span>/scripts
+<span class="k">ENV</span> <span class="nv">SCRIPTS</span><span class="o">=</span><span class="nv">$SCRIPTS</span>
+
+<span class="k">ARG</span> <span class="nv">MODULES_DIR</span><span class="o">=</span>/opt
+<span class="k">ENV</span> <span class="nv">MODULES_DIR</span><span class="o">=</span><span class="nv">$MODULES_DIR</span>
+
+<span class="k">ARG</span> <span class="nv">RESOURCES</span><span class="o">=</span>/resources
+<span class="k">ENV</span> <span class="nv">RESOURCES</span><span class="o">=</span><span class="nv">$RESOURCES</span>
+
+<span class="k">ARG</span> <span class="nv">EXAMPLES</span><span class="o">=</span>/examples
+<span class="k">ENV</span> <span class="nv">EXAMPLES</span><span class="o">=</span><span class="nv">$EXAMPLES</span>
+
+<span class="k">ARG</span> <span class="nv">RESULTS</span><span class="o">=</span>/results
+<span class="k">ENV</span> <span class="nv">RESULTS</span><span class="o">=</span><span class="nv">$RESULTS</span>
+
+<span class="k">ARG</span> <span class="nv">DICOM_NODE</span><span class="o">=</span>/dcmtk/received
+<span class="k">ENV</span> <span class="nv">DICOM_NODE</span><span class="o">=</span><span class="nv">$DICOM_NODE</span>
 
 <span class="c"># Make dirs</span>
 <span class="k">RUN</span> mkdir -p <span class="nv">$MODULES_DIR</span>
@@ -276,10 +289,18 @@
 <span class="k">RUN</span> mkdir -p <span class="nv">$RESOURCES</span>
 
 <span class="c"># Install system packages</span>
-<span class="k">RUN</span> apt update
-<span class="k">RUN</span> apt install -y dcmtk
-<span class="k">RUN</span> apt install -y python3.6 build-essential python3.6-dev python3-pip
-<span class="k">RUN</span> apt install -y mongodb-server python-pymongo python-psutil python-tables
+<span class="k">RUN</span> apt update <span class="o">&amp;&amp;</span> apt install -y <span class="se">\</span>
+    build-essential <span class="se">\</span>
+    cron <span class="se">\</span>
+    dcmtk <span class="se">\</span>
+    mongodb-server <span class="se">\</span>
+    python3.6 <span class="se">\</span>
+    python3.6-dev <span class="se">\</span>
+    python3-pip <span class="se">\</span>
+    python-psutil <span class="se">\</span>
+    python-pymongo <span class="se">\</span>
+    python-tables <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> apt clean <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/*
 
 <span class="c"># Copy files</span>
 <span class="k">ADD</span> ./requirements.txt /requirements.txt
@@ -294,6 +315,13 @@
 <span class="c"># Install Python dependencies</span>
 <span class="k">RUN</span> python3 -m pip install --upgrade pip
 <span class="k">RUN</span> python3 -m pip install --no-cache-dir -r /requirements.txt
+
+<span class="c"># Copy cron file to the cron.d directory</span>
+<span class="k">COPY</span> ./docker/ubuntu/workflow-manager-cron /etc/cron.d/workflow-manager-cron
+<span class="c"># Give execution rights on the cron job</span>
+<span class="k">RUN</span> chmod <span class="m">0644</span> /etc/cron.d/workflow-manager-cron
+<span class="c"># Apply cron job</span>
+<span class="k">RUN</span> crontab /etc/cron.d/workflow-manager-cron
 
 <span class="k">WORKDIR</span><span class="s"> $DICOM_NODE</span>
 <span class="k">CMD</span> /bin/bash /entrypoint.sh
