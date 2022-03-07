@@ -1,0 +1,1040 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>API &mdash; workflow-manager  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Testing" href="testing.html" />
+    <link rel="prev" title="Container-based deployment" href="container_based_deployment.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> workflow-manager
+          
+
+          
+            
+            <img src="_static/abi-vc-rgb.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_components/index.html">Workflow components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="container_based_deployment.html">Container-based deployment</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#utils">utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#project">Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#script">Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#process">Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#workspace">Workspace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future.html">Future</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing_to_documentation.html">Contributing to documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">workflow-manager</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-workflow_manager">
+<span id="api"></span><h1>API<a class="headerlink" href="#module-workflow_manager" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="utils">
+<h2>utils<a class="headerlink" href="#utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt id="workflow_manager.utils.create_project">
+<code class="sig-prename descclassname"><span class="pre">utils.</span></code><code class="sig-name descname"><span class="pre">create_project</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">27017</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.utils.create_project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new project.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – the name of the project, which must be unique in the
+MongoDB used by the project.</p></li>
+<li><p><strong>root_dir</strong> – the root directory for the project. If the folder does not
+exist it will be created. Three additional subdirectories
+will be created: scripts, workspaces and logs.</p></li>
+<li><p><strong>host</strong> – the <cite>host</cite> for the MongoDB database.</p></li>
+<li><p><strong>port</strong> – the <cite>port</cite> for the MongoDB database.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Project</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.utils.drop_database">
+<code class="sig-prename descclassname"><span class="pre">utils.</span></code><code class="sig-name descname"><span class="pre">drop_database</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">27017</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.utils.drop_database" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="project">
+<h2>Project<a class="headerlink" href="#project" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="workflow_manager.Project">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">workflow_manager.</span></code><code class="sig-name descname"><span class="pre">Project</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">27017</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="workflow_manager.Project.active_process">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">active_process</span></code><a class="headerlink" href="#workflow_manager.Project.active_process" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.active_processes">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">active_processes</span></code><a class="headerlink" href="#workflow_manager.Project.active_processes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.check_active_process">
+<code class="sig-name descname"><span class="pre">check_active_process</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.check_active_process" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.check_active_processes">
+<code class="sig-name descname"><span class="pre">check_active_processes</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.check_active_processes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.clear_db">
+<code class="sig-name descname"><span class="pre">clear_db</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.clear_db" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.clear_system">
+<code class="sig-name descname"><span class="pre">clear_system</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.clear_system" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.clear_workspaces">
+<code class="sig-name descname"><span class="pre">clear_workspaces</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.clear_workspaces" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.delete_process">
+<code class="sig-name descname"><span class="pre">delete_process</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete_workspaces</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.delete_process" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.delete_script">
+<code class="sig-name descname"><span class="pre">delete_script</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.delete_script" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.delete_workspace">
+<code class="sig-name descname"><span class="pre">delete_workspace</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.delete_workspace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.get_next_process">
+<code class="sig-name descname"><span class="pre">get_next_process</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unused_cores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.get_next_process" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.get_process">
+<code class="sig-name descname"><span class="pre">get_process</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.get_process" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.get_script">
+<code class="sig-name descname"><span class="pre">get_script</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.get_script" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.get_workspace">
+<code class="sig-name descname"><span class="pre">get_workspace</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wksp_num</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.get_workspace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.import_script">
+<code class="sig-name descname"><span class="pre">import_script</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">script_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rerun_processes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.import_script" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.kill">
+<code class="sig-name descname"><span class="pre">kill</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">process_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.kill" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.kill_all">
+<code class="sig-name descname"><span class="pre">kill_all</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.kill_all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.list">
+<code class="sig-name descname"><span class="pre">list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">script</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.list_processes">
+<code class="sig-name descname"><span class="pre">list_processes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">script</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.list_processes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.list_scripts">
+<code class="sig-name descname"><span class="pre">list_scripts</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.list_scripts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.list_workspaces">
+<code class="sig-name descname"><span class="pre">list_workspaces</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.list_workspaces" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.new_script">
+<code class="sig-name descname"><span class="pre">new_script</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.new_script" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.new_workspace">
+<code class="sig-name descname"><span class="pre">new_workspace</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.new_workspace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.process">
+<code class="sig-name descname"><span class="pre">process</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.process" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.process_completed">
+<code class="sig-name descname"><span class="pre">process_completed</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.process_completed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.process_path">
+<code class="sig-name descname"><span class="pre">process_path</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.process_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.processes">
+<code class="sig-name descname"><span class="pre">processes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.processes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.processes_dir">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">processes_dir</span></code><a class="headerlink" href="#workflow_manager.Project.processes_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.processes_pending">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">processes_pending</span></code><a class="headerlink" href="#workflow_manager.Project.processes_pending" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.queue">
+<code class="sig-name descname"><span class="pre">queue</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">process_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">propagate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.queue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.root_dir">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">root_dir</span></code><a class="headerlink" href="#workflow_manager.Project.root_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.run_script">
+<code class="sig-name descname"><span class="pre">run_script</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.run_script" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.script">
+<code class="sig-name descname"><span class="pre">script</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">can_create</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.script" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.scripts_dir">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">scripts_dir</span></code><a class="headerlink" href="#workflow_manager.Project.scripts_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.start_next_process">
+<code class="sig-name descname"><span class="pre">start_next_process</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.start_next_process" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.total_used_cores">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">total_used_cores</span></code><a class="headerlink" href="#workflow_manager.Project.total_used_cores" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.trim_process_index">
+<code class="sig-name descname"><span class="pre">trim_process_index</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.trim_process_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.trim_script_index">
+<code class="sig-name descname"><span class="pre">trim_script_index</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.trim_script_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.trim_workspace_index">
+<code class="sig-name descname"><span class="pre">trim_workspace_index</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.trim_workspace_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.workspace">
+<code class="sig-name descname"><span class="pre">workspace</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wksp_num</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Project.workspace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Project.workspaces_dir">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">workspaces_dir</span></code><a class="headerlink" href="#workflow_manager.Project.workspaces_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="script">
+<h2>Script<a class="headerlink" href="#script" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="workflow_manager.Script">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">workflow_manager.</span></code><code class="sig-name descname"><span class="pre">Script</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="workflow_manager.Script.add_dependency">
+<code class="sig-name descname"><span class="pre">add_dependency</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent_script_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.add_dependency" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.add_dependent">
+<code class="sig-name descname"><span class="pre">add_dependent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child_script_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.add_dependent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.add_source">
+<code class="sig-name descname"><span class="pre">add_source</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'copy'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.add_source" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.append_data">
+<code class="sig-name descname"><span class="pre">append_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.append_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends data to a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.clear_sources">
+<code class="sig-name descname"><span class="pre">clear_sources</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.clear_sources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.cores">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">cores</span></code><a class="headerlink" href="#workflow_manager.Script.cores" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.data">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">data</span></code><a class="headerlink" href="#workflow_manager.Script.data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.directory">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">directory</span></code><a class="headerlink" href="#workflow_manager.Script.directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.find_existing_process_by_parent">
+<code class="sig-name descname"><span class="pre">find_existing_process_by_parent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.find_existing_process_by_parent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.has_source">
+<code class="sig-name descname"><span class="pre">has_source</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.has_source" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.load_as_module">
+<code class="sig-name descname"><span class="pre">load_as_module</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.load_as_module" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.new_process">
+<code class="sig-name descname"><span class="pre">new_process</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.new_process" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.on_hold">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">on_hold</span></code><a class="headerlink" href="#workflow_manager.Script.on_hold" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.path">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">path</span></code><a class="headerlink" href="#workflow_manager.Script.path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.queue_dependent">
+<code class="sig-name descname"><span class="pre">queue_dependent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dependent_script</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_process</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.queue_dependent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.queue_dependents">
+<code class="sig-name descname"><span class="pre">queue_dependents</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent_process</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pending'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.queue_dependents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.queue_process">
+<code class="sig-name descname"><span class="pre">queue_process</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.queue_process" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.reset">
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.run">
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pending'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.set_cores_required">
+<code class="sig-name descname"><span class="pre">set_cores_required</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_cores</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.set_cores_required" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the number of cores used by this script. Default is 1.
+This allows BPM to run multiple scripts/processes on multi-core
+machines.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.set_data">
+<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the value of a key.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.set_filename">
+<code class="sig-name descname"><span class="pre">set_filename</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.set_filename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.set_hold_state">
+<code class="sig-name descname"><span class="pre">set_hold_state</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.set_hold_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets whether the script is allowed to run. If not it will stop the propagation
+of processes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.set_program">
+<code class="sig-name descname"><span class="pre">set_program</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.set_program" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.set_script">
+<code class="sig-name descname"><span class="pre">set_script</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.set_script" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.set_source">
+<code class="sig-name descname"><span class="pre">set_source</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'copy'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.set_source" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.set_source_path">
+<code class="sig-name descname"><span class="pre">set_source_path</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.set_source_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.set_time_limit">
+<code class="sig-name descname"><span class="pre">set_time_limit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timelimit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.set_time_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the time limit for which a process for this script can run
+for. Default is -1, which means it can run for an unlimited
+amount of time.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.spawn">
+<code class="sig-name descname"><span class="pre">spawn</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.spawn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Script.update_from_source">
+<code class="sig-name descname"><span class="pre">update_from_source</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Script.update_from_source" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="process">
+<h2>Process<a class="headerlink" href="#process" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="workflow_manager.Process">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">workflow_manager.</span></code><code class="sig-name descname"><span class="pre">Process</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="workflow_manager.Process.append_data">
+<code class="sig-name descname"><span class="pre">append_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.append_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends data to a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.check_status">
+<code class="sig-name descname"><span class="pre">check_status</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.check_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.clear_metadata">
+<code class="sig-name descname"><span class="pre">clear_metadata</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.clear_metadata" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.completed">
+<code class="sig-name descname"><span class="pre">completed</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.completed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.cores">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">cores</span></code><a class="headerlink" href="#workflow_manager.Process.cores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number or cores required by this script/process</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.data">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">data</span></code><a class="headerlink" href="#workflow_manager.Process.data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.duration">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">duration</span></code><a class="headerlink" href="#workflow_manager.Process.duration" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.get_ancestor">
+<code class="sig-name descname"><span class="pre">get_ancestor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.get_ancestor" title="Permalink to this definition">¶</a></dt>
+<dd><p>This return an ancestor of a process that matches the given
+generation, label, or id.</p>
+<p>ancestor = process.get_ancestor(gen=2) will return the ancestor
+two generations back, or None if none is found.</p>
+<p>ancestor = process.get_ancestor(id=63) will return the ancestor
+with an id of 63, or None if none is found.</p>
+<p>ancestor = process.get_ancestor(label=’fit’) will return the
+ancestor with the label “fit”, or None if none is found.</p>
+<dl class="simple">
+<dt>This function is a convinient wrapper to:</dt><dd><p>process.get_ancestor_by_generation(gen)
+process.get_ancestor_by_id(id)
+process.get_ancestor_by_label(label)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.get_ancestor_by_generation">
+<code class="sig-name descname"><span class="pre">get_ancestor_by_generation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.get_ancestor_by_generation" title="Permalink to this definition">¶</a></dt>
+<dd><p>This return an ancestor of a process that matches the given
+generation.</p>
+<p>ancestor = process.get_ancestor(gen=2) will return the ancestor
+two generations back, or None if none is found.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.get_ancestor_by_id">
+<code class="sig-name descname"><span class="pre">get_ancestor_by_id</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.get_ancestor_by_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>This return an ancestor of a process that matches the given id.</p>
+<p>ancestor = process.get_ancestor(id=63) will return the ancestor
+with an id of 63, or None if none is found.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.get_ancestor_by_label">
+<code class="sig-name descname"><span class="pre">get_ancestor_by_label</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.get_ancestor_by_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>This return an ancestor of a process that matches the given
+label.</p>
+<p>ancestor = process.get_ancestor(label=’fit’) will return the
+ancestor with the label “fit”, or None if none is found.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.get_decendents">
+<code class="sig-name descname"><span class="pre">get_decendents</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.get_decendents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.get_list_of_logs">
+<code class="sig-name descname"><span class="pre">get_list_of_logs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.get_list_of_logs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.get_workspace">
+<code class="sig-name descname"><span class="pre">get_workspace</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.get_workspace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a workspace with a given label that is associated with
+the process.</p>
+<p>If the workspace does not exist, it will create
+and return a new workspace if <code class="docutils literal notranslate"><span class="pre">create=True</span></code> otherwise it will
+return None.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.get_workspaces">
+<code class="sig-name descname"><span class="pre">get_workspaces</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.get_workspaces" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.has_metadata">
+<code class="sig-name descname"><span class="pre">has_metadata</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.has_metadata" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.kill">
+<code class="sig-name descname"><span class="pre">kill</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.kill" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.label">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">label</span></code><a class="headerlink" href="#workflow_manager.Process.label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the label of the script for this process</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.log">
+<code class="sig-name descname"><span class="pre">log</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.message">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">message</span></code><a class="headerlink" href="#workflow_manager.Process.message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the message for this process</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.metadata">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">metadata</span></code><a class="headerlink" href="#workflow_manager.Process.metadata" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.open_latest_log">
+<code class="sig-name descname"><span class="pre">open_latest_log</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.open_latest_log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.open_logfile">
+<code class="sig-name descname"><span class="pre">open_logfile</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logdatetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.open_logfile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.params">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">params</span></code><a class="headerlink" href="#workflow_manager.Process.params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.parent">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">parent</span></code><a class="headerlink" href="#workflow_manager.Process.parent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the parent process for this process, i.e., the process
+that spawned this process.</p>
+<p>This can strung together:
+<cite>parent_process = process.parent.parent.parent</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.parent_process">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">parent_process</span></code><a class="headerlink" href="#workflow_manager.Process.parent_process" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.process_dir">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">process_dir</span></code><a class="headerlink" href="#workflow_manager.Process.process_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.progress">
+<code class="sig-name descname"><span class="pre">progress</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">progress</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.progress" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.purge_logs">
+<code class="sig-name descname"><span class="pre">purge_logs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.purge_logs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.queue">
+<code class="sig-name descname"><span class="pre">queue</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">propagate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.queue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.queue_dependent">
+<code class="sig-name descname"><span class="pre">queue_dependent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dependent_script</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.queue_dependent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.reverse_file">
+<code class="sig-name descname"><span class="pre">reverse_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myfile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.reverse_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterates the lines of a file, but in reverse order</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.root">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">root</span></code><a class="headerlink" href="#workflow_manager.Process.root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the root process for this sequence of processes, i.e.,
+the original process that spawned this sequence process.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.script">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">script</span></code><a class="headerlink" href="#workflow_manager.Process.script" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the script for this process</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.set_data">
+<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the value of a key.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.set_metadata">
+<code class="sig-name descname"><span class="pre">set_metadata</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.set_metadata" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.set_param">
+<code class="sig-name descname"><span class="pre">set_param</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.set_param" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.start">
+<code class="sig-name descname"><span class="pre">start</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.started">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">started</span></code><a class="headerlink" href="#workflow_manager.Process.started" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.status">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">status</span></code><a class="headerlink" href="#workflow_manager.Process.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the status this process</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Process.workspace">
+<code class="sig-name descname"><span class="pre">workspace</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Process.workspace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="workspace">
+<h2>Workspace<a class="headerlink" href="#workspace" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="workflow_manager.Workspace">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">workflow_manager.</span></code><code class="sig-name descname"><span class="pre">Workspace</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workspace_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace" title="Permalink to this definition">¶</a></dt>
+<dd><p>A workspace is where data is stored. These are typically stored in
+path_to_project_dir/workspaces.</p>
+<p>Workspaces are typically created through processes which means they
+are associated with the process but you can create orphan workspaces.
+In other words, they aren’t associated with a process. An orphan
+workspace can be created through the project using the
+Project.new_workspace(label=None) command.</p>
+<dl class="py method">
+<dt id="workflow_manager.Workspace.add_data">
+<code class="sig-name descname"><span class="pre">add_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace.add_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds data as a dictionary.</p>
+<dl class="simple">
+<dt>Example:</dt><dd><p>workspace.add_data({‘elements’:[1,3,5]})</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Workspace.append_data">
+<code class="sig-name descname"><span class="pre">append_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace.append_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends data to a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Workspace.clear">
+<code class="sig-name descname"><span class="pre">clear</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace.clear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Workspace.clear_directory_contents">
+<code class="sig-name descname"><span class="pre">clear_directory_contents</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">protected_dirs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace.clear_directory_contents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Workspace.compare_versions">
+<code class="sig-name descname"><span class="pre">compare_versions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace.compare_versions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Workspace.copy_directory_contents">
+<code class="sig-name descname"><span class="pre">copy_directory_contents</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace.copy_directory_contents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Workspace.copy_file">
+<code class="sig-name descname"><span class="pre">copy_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace.copy_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Workspace.copy_files">
+<code class="sig-name descname"><span class="pre">copy_files</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepaths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace.copy_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies files into the workspace.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Workspace.create_version">
+<code class="sig-name descname"><span class="pre">create_version</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace.create_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Workspace.data">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">data</span></code><a class="headerlink" href="#workflow_manager.Workspace.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary of the data associated with the workspace.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Workspace.delete">
+<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Workspace.delete_folder">
+<code class="sig-name descname"><span class="pre">delete_folder</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace.delete_folder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Workspace.extract_zipfile">
+<code class="sig-name descname"><span class="pre">extract_zipfile</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace.extract_zipfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts a zip file into the workspace.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Workspace.list">
+<code class="sig-name descname"><span class="pre">list</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace.list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Workspace.md5sum">
+<code class="sig-name descname"><span class="pre">md5sum</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace.md5sum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Workspace.open_file">
+<code class="sig-name descname"><span class="pre">open_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace.open_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens a file in the workspace and returns the file pointer object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Workspace.path">
+<code class="sig-name descname"><span class="pre">path</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace.path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="workflow_manager.Workspace.set_data">
+<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#workflow_manager.Workspace.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the value of a key.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="testing.html" class="btn btn-neutral float-right" title="Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="container_based_deployment.html" class="btn btn-neutral float-left" title="Container-based deployment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2012, Duane Malcolm, Thiranja Prasad Babarenda Gamage, Chinchien Lin.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

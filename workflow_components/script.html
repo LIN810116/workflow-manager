@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Scripts &mdash; workflow-manager  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Processes" href="process.html" />
+    <link rel="prev" title="Projects" href="project.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> workflow-manager
+          
+
+          
+            
+            <img src="../_static/abi-vc-rgb.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Workflow components</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="project.html">Projects</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-script-to-a-project">Adding a Script to a Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#script-dependencies">Script Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#updating-scripts-from-sources">Updating Scripts from Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-a-script">Running a Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-script">Example Script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="process.html">Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workspace.html">Workspaces</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../container_based_deployment.html">Container-based deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../future.html">Future</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing_to_documentation.html">Contributing to documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributors.html">Contributors</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">workflow-manager</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Workflow components</a> &raquo;</li>
+        
+      <li>Scripts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/workflow_components/script.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="scripts">
+<h1>Scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h1>
+<p>A script is a description of how to process data. Scripts can depend on
+other scripts which create pipelines of processes.</p>
+<div class="section" id="adding-a-script-to-a-project">
+<h2>Adding a Script to a Project<a class="headerlink" href="#adding-a-script-to-a-project" title="Permalink to this headline">¶</a></h2>
+<p>To add a script to a project, you need to create a new script with a
+unique label within the project, set the program command to execute the
+script and path to the script. The path can be an absolute or relative
+path. A relative path is with respect to the script directory. In the
+case of a relative path, the script needs to be copied to the projects
+scripts directory.</p>
+<p>An example of adding a script to a project,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">script</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_script</span><span class="p">(</span><span class="s1">&#39;import scan&#39;</span><span class="p">)</span>
+<span class="n">script</span><span class="o">.</span><span class="n">set_program</span><span class="p">(</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
+<span class="n">script</span><span class="o">.</span><span class="n">set_script</span><span class="p">(</span><span class="s1">&#39;import_scan.py&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="script-dependencies">
+<span id="id1"></span><h2>Script Dependencies<a class="headerlink" href="#script-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>A dependency on another script can be added using the add_dependency
+function with the label of the parent script. For example, this segment
+script depends on the  pretend import script,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">script</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_script</span><span class="p">(</span><span class="s1">&#39;segment&#39;</span><span class="p">)</span>
+<span class="n">script</span><span class="o">.</span><span class="n">set_program</span><span class="p">(</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
+<span class="n">script</span><span class="o">.</span><span class="n">set_script</span><span class="p">(</span><span class="s1">&#39;segment.py&#39;</span><span class="p">)</span>
+<span class="n">script</span><span class="o">.</span><span class="n">add_dependency</span><span class="p">(</span><span class="s1">&#39;pretend_import&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this case, on completion of any process that is spawned from the
+import scan script, the segment script will spawn a process with a
+relationship to the parent process. This allow pipelining of processes
+and the automatic recording and tracing of data processing.</p>
+</div>
+<div class="section" id="updating-scripts-from-sources">
+<h2>Updating Scripts from Sources<a class="headerlink" href="#updating-scripts-from-sources" title="Permalink to this headline">¶</a></h2>
+<p>Instead of manually copying a script to the projects script directory,
+the source of the script can be defined using the add_source function
+and the update_from_source function can be called to copy the script
+into the projects scripts directory. For example,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">script</span><span class="o">.</span><span class="n">add_source</span><span class="p">(</span><span class="s1">&#39;/home/user/my_scripts/import_scan.py&#39;</span><span class="p">)</span>
+<span class="n">script</span><span class="o">.</span><span class="n">update_from_source</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>A script can have multiple source files, for example, supporting
+modules. Currently, this feature only supports copy updates but is
+intended to include http and versioned repository type sources. In all
+cases, a version can be associated with the script and processes spawned
+from the script such that the processes that create data can be
+traceable. This means the exact processes that created some data can be
+traced back to its origin.</p>
+</div>
+<div class="section" id="running-a-script">
+<h2>Running a Script<a class="headerlink" href="#running-a-script" title="Permalink to this headline">¶</a></h2>
+<p>This script can be run manually or automatically by a cron job or the
+WM project due to a dependency. Here is an example of how to manually
+run this script:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">project</span> <span class="o">=</span> <span class="n">workflow_manager</span><span class="o">.</span><span class="n">Project</span><span class="p">(</span><span class="n">project_name</span><span class="p">)</span>
+<span class="n">project</span><span class="o">.</span><span class="n">run_script</span><span class="p">(</span><span class="s1">&#39;import_zipped_scan&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;filepath&#39;</span><span class="p">:</span><span class="n">zippath</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>First, load the project then run the run_script function which takes the
+script label (‘import_zipped_scan’) and script arguments as inputs. This
+will create a process that executes the script in the project
+environment.</p>
+</div>
+<div class="section" id="example-script">
+<span id="id2"></span><h2>Example Script<a class="headerlink" href="#example-script" title="Permalink to this headline">¶</a></h2>
+<p>Here is an example of the Import scan script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">workflow_manager</span>
+
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">project_name</span><span class="p">,</span> <span class="n">process_id</span><span class="p">):</span>
+
+   <span class="c1"># Open project</span>
+   <span class="n">project</span> <span class="o">=</span> <span class="n">workflow_manager</span><span class="o">.</span><span class="n">Project</span><span class="p">(</span><span class="n">project_name</span><span class="p">)</span>
+
+   <span class="c1"># Get process and arguments</span>
+   <span class="n">process</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_process</span><span class="p">(</span><span class="n">process_id</span><span class="p">)</span>
+   <span class="n">filepath</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">arguments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;filepath&#39;</span><span class="p">)</span>
+
+   <span class="c1"># Create or load workspace</span>
+   <span class="n">workspace</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">get_workspace</span><span class="p">(</span><span class="s1">&#39;scan&#39;</span><span class="p">)</span>
+
+   <span class="c1"># Extract zip file into workspace</span>
+   <span class="n">status</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="n">extract_zipfile</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+   <span class="n">process</span><span class="o">.</span><span class="n">completed</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span> <span class="c1">### REQUIRED ###</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+       <span class="n">project_name</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+       <span class="n">process_id</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+       <span class="n">run</span><span class="p">(</span><span class="n">project_name</span><span class="p">,</span> <span class="n">process_id</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When this script is run, it requires the project name and the process id
+that is running this script. Given these arguments:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>the project is opened</p></li>
+<li><p>the process running the script is loaded</p></li>
+<li><p>the path to the zip file, the filepath argument is retrieved from the process</p></li>
+<li><p>a workspace called scan (required) is created or retrieved if it exists</p></li>
+<li><p>the zip file is extracted into the workspace</p></li>
+<li><p>and the status of the process is returned to the process - this will spawn any dependent scripts.</p></li>
+</ol>
+</div></blockquote>
+<p>Notice the example script has a run function that is called from a
+<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">“__main__”:</span></code> expression. This allows a script to be
+called from the command line and, in the future, by importing the script
+as a module. So it is good practice to write your scripts to include a
+run function, i.e., in the form above.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="process.html" class="btn btn-neutral float-right" title="Processes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="project.html" class="btn btn-neutral float-left" title="Projects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2012, Duane Malcolm, Thiranja Prasad Babarenda Gamage, Chinchien Lin.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

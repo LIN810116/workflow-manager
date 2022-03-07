@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Future &mdash; workflow-manager  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing to documentation" href="contributing_to_documentation.html" />
+    <link rel="prev" title="Testing" href="testing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> workflow-manager
+          
+
+          
+            
+            <img src="_static/abi-vc-rgb.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_components/index.html">Workflow components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="container_based_deployment.html">Container-based deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Future</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pipelines-vs-broadcast-listeners">Pipelines vs’ Broadcast/Listeners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-control-of-scripts">Version Control of Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#storing-ancestors-and-descendants">Storing Ancestors and Descendants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#checks-and-locking">Checks and Locking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notifications">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#collections">Collections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing_to_documentation.html">Contributing to documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">workflow-manager</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Future</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/future.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="future">
+<h1>Future<a class="headerlink" href="#future" title="Permalink to this headline">¶</a></h1>
+<p>How do you manage data and the processing of data in a structured yet
+flexible way? Currently, the typical way is to store data on user
+filesystems in ad hoc directory structures and process them manually.
+The problem is that data can get lost, and if it is not lost, how the
+data was generated or processed is lost.</p>
+<p>So how do we improve on this? There are two approaches: design the
+ultimate system, then build and use it; or design the minimal system,
+build and use it, then evolve to the ultimate system. The Workflow Manager package(WM) is the latter,
+hence there are many missing features: authentication, access control,
+remote access, required and structured data paradigms (e.g., rdf, ontologies).
+We know how to build these but they take time, hence these will evolve
+into the system as they are needed. The great thing about this approach
+is that it’s based on user experience, as opposed to imagined ways of use.
+The disadvantage of this approach is that it will change regularly,
+however, data can be migrated, so previous work is not lost.</p>
+<p>In summary, WM is an experimental system that will hopefully evolve
+into a useful and user friendly system.</p>
+<p>The following are ideas that will be useful for future developments.
+Some questions to ask when adding a feature:</p>
+<p>Does it solve a problem?
+Does it add more or reduce work for the user?</p>
+<div class="section" id="pipelines-vs-broadcast-listeners">
+<h2>Pipelines vs’ Broadcast/Listeners<a class="headerlink" href="#pipelines-vs-broadcast-listeners" title="Permalink to this headline">¶</a></h2>
+<p>The current method for processing a pipeline is to create a job with a
+list of processes that get queued. Maybe a better and more flexible method
+is to create a broadcast/listener system. In this case, you would register
+your scripts with a unique label, which has to be agreed amongst users.
+A script will also have a list of scripts it listens to.</p>
+<p>For example, the ‘fit breast mesh’ script might listen for when ‘segment
+breast MRI’ script is run and when it does, it would execute itself based
+on the data produced by the segment script. Another example, is for
+creating a PCA mesh of the breast, the ‘generate breast PCA mesh’
+scripts might listen for executions by the ‘fit breast mesh’ and if
+the fit was successful and its error was below a threshold, it would
+add the breast mesh to the PCA mesh, and even version the PCA mesh.
+This broadcast/listen system can also be used to notify users via
+email or a website of changes.</p>
+<p>The advantage of this system is that it does not rely on ensuring when
+someone runs a script, they know what other scripts to run. Those
+decisions are made by the scripts listening to them. Also scripts
+can be informed of updates to upsteam scripts or re-processing
+of data, and its up to the downstream script to decide what
+to do.
+DONE</p>
+</div>
+<div class="section" id="version-control-of-scripts">
+<h2>Version Control of Scripts<a class="headerlink" href="#version-control-of-scripts" title="Permalink to this headline">¶</a></h2>
+<p>It should be possible to register a repository with a script where a
+project can be commanded to pull the latest version from the repository.
+In this case WM can automatically record the version of scripts data
+was processed or generated with.</p>
+<p>Furthermore, it might be possible to modify a script in a version control
+system and ask a project to test the version against the data and report
+the changes or errors. This allows user to check the effect of changes
+before committing them to widespread use.</p>
+<p>Update:
+The current version of WM has the structure to implement this
+functionality. One can add the source of the script which has a path
+and update mode. The path defines where to find the script, for
+example, file, http or version controlled repository path. The
+update mode tells the project how to update the script from the
+path. Copy functionality is there, where one can run
+“script.update_from_source()” and the script will be copied.
+There is no support for http or repositories and tracking of versions yet.</p>
+<p>Another idea is to implement a “script.test_from_source()” function that
+can test the source scripts in a sandbox type environment to ensure it
+runs correctly. This could be commanded to run on one pipeline, many pipelines
+(manually or randomly defined) or all pipelines that use the script in the
+existing project and report differences.</p>
+</div>
+<div class="section" id="storing-ancestors-and-descendants">
+<h2>Storing Ancestors and Descendants<a class="headerlink" href="#storing-ancestors-and-descendants" title="Permalink to this headline">¶</a></h2>
+<p>This stores the relationships between workspaces and data stored in
+workspaces. This allows the ability to track how data is created and
+what data might be affected downstream is data is changed.</p>
+<p>Currently, this kind of happens via job creation and scripts. It needs
+to be improved however, this may be easier to improve if broadcast/listeners
+were used instead of fixed pipelines.</p>
+<p>Update:
+This is currently in place but not formalised. The processes and workspaces
+know about their parents and children but no functions to determine and
+report ancestors or descendents. It may be worth saving this with each
+process or workspace, including the root ancestor.</p>
+</div>
+<div class="section" id="checks-and-locking">
+<h2>Checks and Locking<a class="headerlink" href="#checks-and-locking" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes it is useful to manually check processed data is correct and if
+it is, lock the data such that it cannot be changed. This needs to be
+implemented.</p>
+</div>
+<div class="section" id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h2>
+<p>A better logging system needs to be implemented that tracks the version
+history of data. This is so that when someone uses data outside of the
+project, the origin of the data and its processes can be accounted for.</p>
+</div>
+<div class="section" id="notifications">
+<h2>Notifications<a class="headerlink" href="#notifications" title="Permalink to this headline">¶</a></h2>
+<p>Web-based or email notifications of certain actions or results.</p>
+</div>
+<div class="section" id="collections">
+<h2>Collections<a class="headerlink" href="#collections" title="Permalink to this headline">¶</a></h2>
+<p>Collections is a way to link workspaces together is a tree or graph form.
+ Workspaces are a flat structure, the only link between them is through
+the flow of data, there is no link in terms of similar data, i.e., data
+from the same study, or scans from the same patient. This will need to
+be nutted out but I suspect workspaces could be added to collections
+manually or automatically via scripts.</p>
+<p>It might be possible to store the collections details in such a way that
+data is a collection can be viewed in different graph hierarchy, for
+example, present by gender, then scan modality, then patient, then
+timestamp, or alternatively, present by patient, then scan modality.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="contributing_to_documentation.html" class="btn btn-neutral float-right" title="Contributing to documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="testing.html" class="btn btn-neutral float-left" title="Testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2012, Duane Malcolm, Thiranja Prasad Babarenda Gamage, Chinchien Lin.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
