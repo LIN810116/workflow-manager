@@ -3,7 +3,7 @@ CI/CD
 
 Workflows can also be set up and run on an automation server to enable continuous integration/continuous delivery (CI/CD).
 
-This page will guide you through the process of setting up an CI/CD automation server (Jenkins) and run your example workflow there.
+This page will guide you through the process of setting up an CI/CD automation server (Jenkins) and hosting your example workflow there.
 
 
 #. Install the Jenkins-server Docker image
