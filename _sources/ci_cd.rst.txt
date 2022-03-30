@@ -1,7 +1,7 @@
 CI/CD
 =====
 
-Workflows can also be set up and run on an automation server and enable continuous integration/continuous delivery (CI/CD).
+Workflows can also be set up and run on an automation server to enable continuous integration/continuous delivery (CI/CD).
 
 This page will guide you through how to set up an CI/CD automation server (Jenkins) and run your example workflow there.
 
