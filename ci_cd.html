@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CI/CD &mdash; workflow-manager  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Future" href="future.html" />
+    <link rel="prev" title="Testing" href="testing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> workflow-manager<img src="_static/abi-vc-rgb.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_components/index.html">Workflow components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="container_based_deployment.html">Container-based deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CI/CD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future.html">Future</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing_to_documentation.html">Contributing to documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">workflow-manager</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>CI/CD</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/ci_cd.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="ci-cd">
+<h1>CI/CD<a class="headerlink" href="#ci-cd" title="Permalink to this headline">¶</a></h1>
+<p>Workflows can also be set up and run on an automation server and enable continuous integration/continuous delivery (CI/CD).</p>
+<p>This page will guide you through how to set up an CI/CD automation server (Jenkins) and run your example workflow there.</p>
+<ol class="arabic">
+<li><p>Install the Jenkins-server Docker image</p>
+<p>In this tutorial, we will use the <a class="reference external" href="https://hub.docker.com/repository/docker/clin864/jenkins-server">jenkin-server</a> Docker image to set up our Jenkins server.
+The complete installation guild of the Jenkins-server image can be found in <a class="reference external" href="https://lin810116.github.io/jenkins-server/installation.html">here</a></p>
+</li>
+<li><p>Setting up your workflow in Jenkins</p>
+<p>See <a class="reference external" href="https://lin810116.github.io/jenkins-server/setting_up_automation_pipeline.html#">this section</a> in the Jenkins-server documentation to add create a Jenkins pipeline for your workflow.
+The <a class="reference external" href="https://lin810116.github.io/jenkins-server/setting_up_automation_pipeline.html#setting-up-ci-cd-pipeline">Setting up CI/CD pipeline</a> sub-section is where you should provide your own Jenkins pipeline script for setting up your workflow.
+Below is an example of the pipeline script you can refer to.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">pipeline</span> <span class="p">{</span>
+    <span class="n">agent</span> <span class="nb">any</span>
+
+    <span class="n">environment</span> <span class="p">{</span>
+        <span class="n">REMOTE_URL</span> <span class="o">=</span> <span class="s1">&#39;git@github.com:LIN810116/workflow-manager.git&#39;</span>
+        <span class="n">CREDENTIAL_ID</span> <span class="o">=</span> <span class="s1">&#39;workflow-manager-clin864&#39;</span>
+        <span class="n">BRANCH</span> <span class="o">=</span> <span class="s1">&#39;main&#39;</span>
+        <span class="n">USER_NAME</span> <span class="o">=</span> <span class="s1">&#39;lin810116&#39;</span>
+        <span class="n">USER_EMAIL</span> <span class="o">=</span> <span class="s1">&#39;lin810116@gmail.com&#39;</span>
+        <span class="n">TEST_MODULE</span> <span class="o">=</span> <span class="s1">&#39;tests/&#39;</span>
+        <span class="n">SOURCE_DIR</span> <span class="o">=</span> <span class="s1">&#39;./docs/source&#39;</span>
+        <span class="n">BUILD_DIR</span> <span class="o">=</span> <span class="s1">&#39;./docs/build&#39;</span>
+        <span class="n">PYENV_VERSION</span> <span class="o">=</span> <span class="s1">&#39;3.6.15&#39;</span>
+        <span class="n">PYTHONPATH</span><span class="o">=</span><span class="s1">&#39;/var/jenkins_home/workspace/workflow-manager&#39;</span>
+        <span class="n">WORKSPACE</span> <span class="o">=</span> <span class="s2">&quot;workspace&quot;</span>
+    <span class="p">}</span>
+
+    <span class="n">stages</span> <span class="p">{</span>
+        <span class="n">stage</span><span class="p">(</span><span class="s1">&#39;Environment Setup&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">steps</span><span class="p">{</span>
+                <span class="n">sh</span> <span class="s1">&#39;printenv&#39;</span>
+
+                <span class="n">echo</span> <span class="s2">&quot;Cloning GitHub repository...&quot;</span>
+                <span class="n">git</span> <span class="n">branch</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{BRANCH}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">credentialsId</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{CREDENTIAL_ID}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{REMOTE_URL}</span><span class="s2">&quot;</span>
+                <span class="n">echo</span> <span class="s2">&quot;Creating virtual environment&quot;</span>
+                <span class="n">sh</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                    python --version</span>
+<span class="s1">                    python -m venv venv</span>
+<span class="s1">                &#39;&#39;&#39;</span>
+
+                <span class="o">//</span> <span class="nb">set</span> <span class="n">up</span> <span class="n">mongodb</span>
+                <span class="n">sh</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                    wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add -</span>
+<span class="s1">                    echo &quot;deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.4 main&quot; | tee /etc/apt/sources.list.d/mongodb-org-4.4.list</span>
+<span class="s1">                    apt-get update</span>
+<span class="s1">                    apt-get install -y mongodb-org</span>
+<span class="s1">                &#39;&#39;&#39;</span>
+                <span class="n">withEnv</span><span class="p">([</span><span class="s1">&#39;JENKINS_NODE_COOKIE =dontkill&#39;</span><span class="p">])</span> <span class="p">{</span>
+                    <span class="o">//</span> <span class="n">Run</span> <span class="ow">in</span> <span class="n">background</span>
+                    <span class="n">sh</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                        nohup mongod --port 27017 --dbpath /var/jenkins_home/workspace/workflow-manager/data/db --bind_ip &#39;localhost&#39; &amp;</span>
+<span class="s1">                    &#39;&#39;&#39;</span>
+                <span class="p">}</span>
+
+                <span class="n">echo</span> <span class="s2">&quot;Installing dependencies...&quot;</span>
+                <span class="n">sh</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                    . venv/bin/activate</span>
+<span class="s1">                    pip install --upgrade pip</span>
+<span class="s1">                    pip install -r requirements.txt</span>
+<span class="s1">                &#39;&#39;&#39;</span>
+
+                <span class="n">echo</span> <span class="s2">&quot;Creating worspace&quot;</span>
+                <span class="n">sh</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                mkdir -p $</span><span class="si">{WORKSPACE}</span><span class="s1"></span>
+<span class="s1">                &#39;&#39;&#39;</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">stage</span> <span class="p">(</span><span class="s1">&#39;Import Scans&#39;</span><span class="p">){</span>
+            <span class="n">steps</span> <span class="p">{</span>
+                <span class="n">sh</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                    . venv/bin/activate</span>
+<span class="s1">                    python examples/scripts/pretend_import.py --workflow False --source examples/data/pretend_data.txt --dest $</span><span class="si">{WORKSPACE}</span><span class="s1"></span>
+<span class="s1">                &#39;&#39;&#39;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">stage</span> <span class="p">(</span><span class="s1">&#39;Segment&#39;</span><span class="p">){</span>
+            <span class="n">steps</span> <span class="p">{</span>
+                <span class="n">sh</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                    . venv/bin/activate</span>
+<span class="s1">                    python examples/scripts/pretend_segment.py --workflow False --source $</span><span class="si">{WORKSPACE}</span><span class="s1">/pretend_data.txt --dest $</span><span class="si">{WORKSPACE}</span><span class="s1">/pointcloud.txt</span>
+<span class="s1">                &#39;&#39;&#39;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">stage</span> <span class="p">(</span><span class="s1">&#39;Fit mesh&#39;</span><span class="p">){</span>
+            <span class="n">steps</span> <span class="p">{</span>
+                <span class="n">sh</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                    . venv/bin/activate</span>
+<span class="s1">                    python examples/scripts/pretend_fit.py --workflow False --source $</span><span class="si">{WORKSPACE}</span><span class="s1">/pointcloud.txt --dest $</span><span class="si">{WORKSPACE}</span><span class="s1">/mesh.txt</span>
+<span class="s1">                &#39;&#39;&#39;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">stage</span> <span class="p">(</span><span class="s1">&#39;Mechanics&#39;</span><span class="p">){</span>
+            <span class="n">steps</span> <span class="p">{</span>
+                <span class="n">sh</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                    . venv/bin/activate</span>
+<span class="s1">                    python examples/scripts/pretend_mechanics1.py --workflow False --source $</span><span class="si">{WORKSPACE}</span><span class="s1">/mesh.txt --dest $</span><span class="si">{WORKSPACE}</span><span class="s1">/solution1.txt</span>
+<span class="s1">                &#39;&#39;&#39;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">stage</span> <span class="p">(</span><span class="s1">&#39;Send results&#39;</span><span class="p">){</span>
+            <span class="n">steps</span> <span class="p">{</span>
+                <span class="n">sh</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                    . venv/bin/activate</span>
+<span class="s1">                    mkdir -p results</span>
+<span class="s1">                    python examples/scripts/pretend_send.py --workflow False --source $</span><span class="si">{WORKSPACE}</span><span class="s1"> --dest results</span>
+
+<span class="s1">                &#39;&#39;&#39;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="o">//</span> <span class="n">stage</span> <span class="p">(</span><span class="s1">&#39;Test&#39;</span><span class="p">){</span>
+        <span class="o">//</span>     <span class="n">steps</span> <span class="p">{</span>
+        <span class="o">//</span>         <span class="n">echo</span> <span class="s2">&quot;Running tests&quot;</span>
+        <span class="o">//</span>         <span class="o">//</span> <span class="n">sh</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        //         //     . venv/bin/activate</span>
+<span class="s1">        //         //     pytest ./tests/test_example_workflow.py</span>
+<span class="s1">        //         //     pytest ./tests/test_functionalities.py</span>
+<span class="s1">        //         // &#39;&#39;&#39;</span>
+        <span class="o">//</span>         <span class="o">//</span> <span class="n">sh</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        //         //     . venv/bin/activate</span>
+<span class="s1">        //         //     pytest --junit-xml=report.xml -o junit_family=xunit2 ./tests/test_example_workflow.py</span>
+<span class="s1">        //         // &#39;&#39;&#39;</span>
+        <span class="o">//</span>         <span class="n">sh</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        //             . venv/bin/activate</span>
+<span class="s1">        //             pytest --junit-xml=report.xml -o junit_family=xunit2 $</span><span class="si">{TEST_MODULE}</span><span class="s1"></span>
+<span class="s1">        //         &#39;&#39;&#39;</span>
+        <span class="o">//</span>     <span class="p">}</span>
+        <span class="o">//</span> <span class="p">}</span>
+
+
+
+        <span class="o">//</span> <span class="n">stage</span><span class="p">(</span><span class="s1">&#39;Build docs&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">//</span>     <span class="n">steps</span> <span class="p">{</span>
+        <span class="o">//</span>         <span class="n">echo</span> <span class="s2">&quot;Building&quot;</span>
+        <span class="o">//</span>         <span class="n">echo</span> <span class="s2">&quot;$</span><span class="si">{WORKSPACE}</span><span class="s2">&quot;</span>
+        <span class="o">//</span>         <span class="n">sh</span> <span class="s2">&quot;$</span><span class="si">{WORKSPACE}</span><span class="s2">/venv/bin/sphinx-build -b html $</span><span class="si">{SOURCE_DIR}</span><span class="s2"> $</span><span class="si">{BUILD_DIR}</span><span class="s2">&quot;</span>
+        <span class="o">//</span>     <span class="p">}</span>
+        <span class="o">//</span> <span class="p">}</span>
+
+
+        <span class="o">//</span> <span class="n">stage</span><span class="p">(</span><span class="s2">&quot;Deploy Docs&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">//</span>     <span class="n">steps</span> <span class="p">{</span>
+        <span class="o">//</span>         <span class="n">echo</span> <span class="s2">&quot;Deploying to GitHub pages&quot;</span>
+        <span class="o">//</span>         <span class="n">sh</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        //             git config --global user.email $</span><span class="si">{USER_EMAIL}</span><span class="s1"></span>
+<span class="s1">        //             git config --global user.name $</span><span class="si">{USER_NAME}</span><span class="s1"></span>
+<span class="s1">        //         &#39;&#39;&#39;</span>
+
+        <span class="o">//</span>         <span class="n">sh</span> <span class="s1">&#39;npm install -g --silent gh-pages@2.1.1&#39;</span>
+        <span class="o">//</span>         <span class="n">sh</span> <span class="s1">&#39;touch $</span><span class="si">{BUILD_DIR}</span><span class="s1">/.nojekyll&#39;</span>
+        <span class="o">//</span>         <span class="n">sshagent</span><span class="p">(</span><span class="n">credentials</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;$</span><span class="si">{CREDENTIAL_ID}</span><span class="s2">&quot;</span><span class="p">])</span> <span class="p">{</span>
+        <span class="o">//</span>             <span class="n">sh</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        //                 gh-pages --dotfiles --message &#39;[skip ci] Updates&#39; --dist $</span><span class="si">{BUILD_DIR}</span><span class="s1"></span>
+<span class="s1">        //             &#39;&#39;&#39;</span>
+        <span class="o">//</span>         <span class="p">}</span>
+        <span class="o">//</span>     <span class="p">}</span>
+        <span class="o">//</span> <span class="p">}</span>
+
+    <span class="p">}</span>
+
+    <span class="o">//</span> <span class="n">post</span> <span class="p">{</span>
+    <span class="o">//</span>     <span class="n">always</span> <span class="p">{</span>
+    <span class="o">//</span>         <span class="n">junit</span> <span class="s1">&#39;report.xml&#39;</span>
+    <span class="o">//</span>     <span class="p">}</span>
+    <span class="o">//</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="testing.html" class="btn btn-neutral float-left" title="Testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="future.html" class="btn btn-neutral float-right" title="Future" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2012, Duane Malcolm, Thiranja Prasad Babarenda Gamage, Chinchien Lin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
